@@ -1,5 +1,7 @@
 # Ignore all __pycache__
 **/__pycache__/
 
-# ignore all .ipynb files
-*.ipynb
+# Ignore Test Results
+checkpoints/
+tests/data/
+tests/plots/

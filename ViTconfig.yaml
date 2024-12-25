@@ -1,0 +1,67 @@
+model:
+  module: 'VisionTransformer'
+  class: 'VisionTransformer'
+  args:
+    in_channels: 1
+    patch_size: 4
+    img_size: 28
+    depth: 3
+    d_model: 16
+    num_heads: 8
+    drop_mha: 0.
+    dropout: 0.
+    drop_ffn: 0.
+    expansion: 4
+    n_classes: 10
+
+training:
+  epochs: 10
+  learning_rate: 0.001
+  optimizer:
+    type: 'Adam'
+    args:
+      weight_decay: 0.0001
+
+testing:
+  metric: ['accuracy'] # "f1", "mse", "mae"
+
+loss:
+  type: 'CrossEntropyLoss'
+  args: {}
+
+dataset:
+  module: 'torchvision.datasets'
+  class: 'MNIST'
+  preprocessing_arg: 'transform'
+  args:
+    preprocessing:
+      module: 'tests.preprocessing'
+      function: 'get_transform'
+
+    train:
+      args: # Input Arguments of your custom dataset
+        root: './tests/data'
+        train: True
+        download: True
+      loader: # Arguments of DataLoader
+        batch_size: 64
+        shuffle: True
+    #valid:
+    #  args: {}
+    #  loader: {}
+    test:
+      args: # Input Arguments of your custom dataset
+        root: './tests/data'
+        train: False
+        download: True
+      loader: # Arguments of DataLoader
+        batch_size: 1000
+        shuffle: False
+
+visualization:
+  enabled: True
+  plot_dir: './tests/plots'
+
+export_results:
+  enabled: True
+  export_dir: './tests/results'

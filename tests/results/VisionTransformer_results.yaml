@@ -1,0 +1,44 @@
+records:
+-   model_config:
+        module: VisionTransformer
+        class: VisionTransformer
+        args:
+            in_channels: 1
+            patch_size: 4
+            img_size: 28
+            depth: 3
+            d_model: 16
+            num_heads: 8
+            drop_mha: 0.0
+            dropout: 0.0
+            drop_ffn: 0.0
+            expansion: 4
+            n_classes: 10
+    training_config:
+        epochs: 10
+        learning_rate: 0.001
+        optimizer:
+            type: Adam
+            args:
+                weight_decay: 0.0001
+        batch_size: 64
+    loss_func:
+        type: CrossEntropyLoss
+        args: {}
+    num_parameters: 11130
+    total_time: 113.5264298915863
+    valid_time: 0
+    train_losses:
+    - 0.9368405058535177
+    - 0.33025506175339603
+    - 0.24537119937778662
+    - 0.1974315087177924
+    - 0.1708584992485101
+    - 0.15028046091188435
+    - 0.13810439420137197
+    - 0.12670637570671053
+    - 0.11996313340580667
+    - 0.11114499434383947
+    valid_losses: []
+    test_results:
+        accuracy: 0.9629
