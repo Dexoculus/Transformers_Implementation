@@ -13,6 +13,10 @@ def attention_rollout(attention_matrices, residual_connection=True):
 
     Returns:
         torch.Tensor: Result of Attention Rollout (batch_size, seq_len, seq_len).
+
+    Source:
+        Abnar, Samira, and Willem Zuidema.
+        "Quantifying attention flow in transformers." arXiv preprint arXiv:2005.00928 (2020).
     """
     # Settings for adding Identity Matrix
     num_layers = len(attention_matrices)
